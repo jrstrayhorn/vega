@@ -1,0 +1,53 @@
+Every app starts with Requirements document
+
+first task is to extract use cases for application - use cases are actions that users can perform
+
+For vega app,
+
+- Create vehicles
+- Update vehicles
+- View vehicles
+- Sort vehicles
+- Filter vehicles
+- Upload photos
+- etc
+
+Dependency Graph - start with a use case - which use cases depend on another for example
+
+Filter Vehicles - depends on -> do this 3
+	List of vehicles - depends on -> do this 2
+		create vehicles do this 1
+
+think about tasks and order to do them
+
+do one task at a time.. don't try to do too many things otherwise you get caught up in details
+
+render simply then once it works you can make it better...
+
+isolate and think about the functionality at hand
+
+Create a Vehicle
+
+- sketch a simple form what are attributes
+	Make
+		dropdown list
+	Model
+		this model list populated based on make
+	both lists come from the server
+	List of Features
+		check box list rendered from the server
+
+Create a vehicle
+	Angular Form
+		API (endpoints to get data to populate form)
+			Database
+				Domain MOdel (Code first migration)
+
+Focus on a small piece of functionality
+
+transition from asp.net mvc 5 to asp.net core
+
+Challenge #1
+	Build the following API endpoints:
+		/api/makes
+		/api/features
