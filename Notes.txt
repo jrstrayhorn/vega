@@ -51,3 +51,31 @@ Challenge #1
 	Build the following API endpoints:
 		/api/makes
 		/api/features
+
+Recording a Vehicle
+
+Make (BMW)
+Model (E90)
+Features (ABS Brakes, Airbags, Bottle Holder, etc.) (many-to-many between features and vehicles
+Registered or not?
+Owner (name, phone, email)
+Photos 1 or many
+
+Vehicle List
+	-> View Vehicle
+	-> Add Vehicle
+
+Domain Model
+	Database
+		API
+
+/api/makes
+
+Id
+Make
+Model
+
+/api/features
+
+Id
+Name
