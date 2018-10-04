@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using vega.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace vega
 {
@@ -21,6 +23,8 @@ namespace vega
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VegaDatabase")));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
