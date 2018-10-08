@@ -8,6 +8,7 @@ namespace vega
     {
         public MappingProfile()
         {
+            // Domain to Dto
             CreateMap<Feature, FeatureDto>();
         }
     }
