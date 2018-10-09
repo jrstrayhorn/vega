@@ -79,3 +79,13 @@ Model
 
 Id
 Name
+
+
+**************************************
+How to create empty migration EF core using .NET Core CLI
+**************************************
+dotnet ef migrations add WhateverNameHere
+
+dotnet ef database update
+
+can also make changes to domain model and then create migration / update database
