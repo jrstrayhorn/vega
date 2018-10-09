@@ -10,6 +10,7 @@ namespace vega
         {
             // Domain to Dto
             CreateMap<Feature, FeatureDto>();
+            CreateMap<MakeModel, MakeModelDto>();
         }
     }
 }
