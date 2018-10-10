@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using vega.Models;
+using vega.Persistence;
 
 namespace vega.Migrations
 {
@@ -32,6 +32,21 @@ namespace vega.Migrations
                     b.ToTable("Features");
                 });
 
+            modelBuilder.Entity("vega.Models.Make", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Makes");
+                });
+
             modelBuilder.Entity("vega.Models.MakeModel", b =>
                 {
                     b.Property<int>("Id")
@@ -47,6 +62,33 @@ namespace vega.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MakeModels");
+                });
+
+            modelBuilder.Entity("vega.Models.Model", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MakeId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MakeId");
+
+                    b.ToTable("Models");
+                });
+
+            modelBuilder.Entity("vega.Models.Model", b =>
+                {
+                    b.HasOne("vega.Models.Make", "Make")
+                        .WithMany("Models")
+                        .HasForeignKey("MakeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

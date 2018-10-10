@@ -3,7 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using vega.Dtos;
-using vega.Models;
+using vega.Persistence;
 
 namespace vega.Controllers
 {
