@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using vega.Controllers.Resources;
 using vega.Dtos;
+using vega.Models;
 using vega.Persistence;
 
 namespace vega.Controllers
@@ -21,9 +24,11 @@ namespace vega.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<MakeModelDto>> GetAll()
+        public ActionResult<List<MakeResource>> GetAll()
         {
-            return _mapper.Map<List<MakeModelDto>>(_context.MakeModels.ToList());
+            //return _mapper.Map<List<MakeModelDto>>(_context.MakeModels.ToList());
+            var makes = _context.Makes.Include(m => m.Models).ToList();
+            return _mapper.Map<List<Make>, List<MakeResource>>(makes);
         }
     }
 }
