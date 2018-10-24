@@ -26,7 +26,6 @@ namespace vega.Controllers
         [HttpGet]
         public ActionResult<List<MakeResource>> GetAll()
         {
-            //return _mapper.Map<List<MakeModelDto>>(_context.MakeModels.ToList());
             var makes = _context.Makes.Include(m => m.Models).ToList();
             return _mapper.Map<List<Make>, List<MakeResource>>(makes);
         }
