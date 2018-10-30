@@ -1,8 +1,16 @@
 <h2>Vehicle Detail</h2>
-<h3><i>Just a FormControl</i></h3>
-<form>
+<form [formGroup]="vehicleForm">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="name" [formControl]="name">
+    <label for="name">Contact Name</label>
+    <input type="text" class="form-control" id="name" placeholder="name" formControlName="contactName">
+  </div>
+  <div class="form-group">
+    <label for="phone">Contact Phone</label>
+    <input type="phone" class="form-control" id="phone" placeholder="phone" formControlName="contactPhone">
+  </div>
+  <div class="form-group">
+    <label for="email">Contact Email</label>
+    <input type="email" class="form-control" id="email" placeholder="email" formControlName="contactEmail">
   </div>
 </form>
+<p>Form value: {{ vehicleForm.value | json }}</p>

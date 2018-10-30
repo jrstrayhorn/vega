@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicle-detail',
@@ -8,9 +8,23 @@ import { FormControl } from '@angular/forms';
 })
 export class VehicleDetailComponent implements OnInit {
 
-  name = new FormControl();
+  vehicleForm: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.vehicleForm = this.formBuilder.group({
+      //make: '',
+      //model: '',
+      //isRegistered: '',
+      //features: '',
+      contactName: '',
+      contactPhone: '',
+      contactEmail: ''
+    });
+  }
 
   ngOnInit() {
   }
