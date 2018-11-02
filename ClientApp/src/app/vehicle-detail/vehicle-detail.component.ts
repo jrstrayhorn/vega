@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
-  selector: 'app-vehicle-detail',
-  templateUrl: './vehicle-detail.component.html',
-  styleUrls: ['./vehicle-detail.component.css']
+  selector: "app-vehicle-detail",
+  templateUrl: "./vehicle-detail.component.html",
+  styleUrls: ["./vehicle-detail.component.css"]
 })
 export class VehicleDetailComponent implements OnInit {
-
   vehicleForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -18,15 +17,13 @@ export class VehicleDetailComponent implements OnInit {
     this.vehicleForm = this.formBuilder.group({
       //make: '',
       //model: '',
-      //isRegistered: '',
+      isRegistered: "",
       //features: '',
-      contactName: '',
-      contactPhone: '',
-      contactEmail: ''
+      contactName: "",
+      contactPhone: "",
+      contactEmail: ""
     });
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
