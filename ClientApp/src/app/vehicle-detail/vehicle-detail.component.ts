@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
 import { VehicleService } from "../vehicle/vehicle.service";
 
 @Component({
@@ -11,6 +11,7 @@ export class VehicleDetailComponent implements OnInit {
   vehicleForm: FormGroup;
   makes$;
   feature$;
+  features;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,15 +22,20 @@ export class VehicleDetailComponent implements OnInit {
   }
 
   createForm() {
-    this.vehicleForm = this.formBuilder.group({
-      make: "",
-      //model: '',
-      isRegistered: "",
-      features: "",
-      contactName: "",
-      contactPhone: "",
-      contactEmail: ""
+    this._vehicleService.getFeatures().subscribe(results => {
+      this.features = results;
+      const controls = results.map(c => new FormControl(false));
+      this.vehicleForm = this.formBuilder.group({
+        make: "",
+        //model: '',
+        isRegistered: "",
+        features: new FormArray(controls),
+        contactName: "",
+        contactPhone: "",
+        contactEmail: ""
+      });
     });
+
   }
 
   populateDropDowns() {
@@ -38,4 +44,6 @@ export class VehicleDetailComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  submit() {}
 }

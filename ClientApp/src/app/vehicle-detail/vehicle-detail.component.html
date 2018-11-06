@@ -1,5 +1,5 @@
 <h2>Vehicle Detail</h2>
-<form [formGroup]="vehicleForm">
+<form [formGroup]="vehicleForm" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="make">Make</label>
     <select class="form-control" name="make" id="make" formControlName="make">
@@ -15,6 +15,11 @@
   <!-- <div *ngFor="let feature of feature$ | async" class="form-check">
 
   </div> -->
+  <label formArrayName="features" *ngFor="let feature of vehicleForm.controls.features.controls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{features[i].name}}
+  </label>
+  </label>
   <div class="form-group">
     <label for="name">Contact Name</label>
     <input type="text" class="form-control" id="name" placeholder="name" formControlName="contactName">
@@ -27,5 +32,6 @@
     <label for="email">Contact Email</label>
     <input type="email" class="form-control" id="email" placeholder="email" formControlName="contactEmail">
   </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <p>Form value: {{ vehicleForm.value | json }}</p>
