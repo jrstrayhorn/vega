@@ -27,7 +27,6 @@ export class VehicleDetailComponent implements OnInit {
       const controls = results.map(c => new FormControl(false));
       this.vehicleForm = this.formBuilder.group({
         make: "",
-        //model: '',
         isRegistered: "",
         features: new FormArray(controls),
         contactName: "",
@@ -35,7 +34,6 @@ export class VehicleDetailComponent implements OnInit {
         contactEmail: ""
       });
     });
-
   }
 
   populateDropDowns() {
