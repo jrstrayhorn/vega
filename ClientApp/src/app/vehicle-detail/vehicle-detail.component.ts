@@ -22,23 +22,24 @@ export class VehicleDetailComponent implements OnInit {
   }
 
   createForm() {
-    this._vehicleService.getFeatures().subscribe(results => {
-      this.features = results;
-      const controls = results.map(c => new FormControl(false));
-      this.vehicleForm = this.formBuilder.group({
-        make: "",
-        isRegistered: "",
-        features: new FormArray(controls),
-        contactName: "",
-        contactPhone: "",
-        contactEmail: ""
-      });
+    this.vehicleForm = this.formBuilder.group({
+      make: ['']
     });
+
+    // this._vehicleService.getFeatures().subscribe(results => {
+    //   this.features = results;
+    //   const controls = results.map(c => new FormControl(false));
+
+    // });
   }
 
   populateDropDowns() {
     this.makes$ = this._vehicleService.getMakes();
-    this.feature$ = this._vehicleService.getFeatures();
+    //this.feature$ = this._vehicleService.getFeatures();
+  }
+
+  changeMake(e) {
+    this.vehicleForm.controls.make.setValue(e.target.value, { onlySelf: true });
   }
 
   ngOnInit() {}
