@@ -1,5 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Make, Feature } from "../data-model";
 
 @Injectable({
   providedIn: "root"
@@ -11,10 +12,10 @@ export class VehicleService {
   }
 
   getMakes() {
-    return this.http.get(`${this.baseUrl}api/makes`);
+    return this.http.get<Make[]>(`${this.baseUrl}api/makes`);
   }
 
   getFeatures() {
-    return this.http.get<any[]>(`${this.baseUrl}api/features`);
+    return this.http.get<Feature[]>(`${this.baseUrl}api/features`);
   }
 }
