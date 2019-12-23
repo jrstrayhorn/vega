@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace vega.Models
@@ -8,5 +9,7 @@ namespace vega.Models
 
         [Required]
         public string Name { get; set; }
+
+        public List<VehicleFeature> VehicleFeatures { get; set; }
     }
 }

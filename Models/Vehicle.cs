@@ -28,5 +28,7 @@ namespace vega.Models
         public Model Model { get; set; }
 
         public DateTime LastUpdate { get; set; }
+
+        public List<VehicleFeature> VehicleFeatures { get; set; }
     }
 }
